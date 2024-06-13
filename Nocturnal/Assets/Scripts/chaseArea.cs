@@ -4,19 +4,10 @@ using UnityEngine;
 
 public class chaseArea : MonoBehaviour
 {
+    public bool change;
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.name == "PlayerCapsule")
-        {
-            UI.go = true;
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.name == "PlayerCapsule")
-        {
-            UI.go = false;
-        }
+        UI.go = change;
     }
 }
