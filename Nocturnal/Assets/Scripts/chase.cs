@@ -12,7 +12,7 @@ public class chase : MonoBehaviour {
     		float dist = Vector3.Distance(target.position, transform.position);
     		//check if it is within the range you set
     		if(UI.go == true){
-      			transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed);      
+      			transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);      
     		}
     		//else, if it is not in rage, it will not follow player
 	}

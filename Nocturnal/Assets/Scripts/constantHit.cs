@@ -16,6 +16,8 @@ public class constantHit : MonoBehaviour
     {
         if (other.name == "PlayerCapsule")
         {
+            AudioSource audio = gameObject.AddComponent<AudioSource>();
+            audio.PlayOneShot((AudioClip)Resources.Load("Models/fail"));
             Light light = thelight.GetComponent<Light>();
             if (light.intensity > 1)
             {

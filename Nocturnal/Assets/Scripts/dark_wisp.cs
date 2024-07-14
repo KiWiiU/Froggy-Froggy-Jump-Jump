@@ -16,7 +16,8 @@ public class dark_wisp : MonoBehaviour
     {
         if (other.name == "PlayerCapsule")
         {
-            self.SetActive(false);
+            AudioSource audio = gameObject.AddComponent<AudioSource>();
+            audio.PlayOneShot((AudioClip)Resources.Load("Models/fail"));
             Light light = thelight.GetComponent<Light>();
             if (light.intensity > 1)
             {
@@ -57,6 +58,8 @@ public class dark_wisp : MonoBehaviour
                     SceneManager.LoadScene("GameOver");
                 }
             }
+            Vector3 teleportDestination = new Vector3(15.0f, 0.0f, 33.0f);
+            transform.position = teleportDestination;
         }
     }
 }

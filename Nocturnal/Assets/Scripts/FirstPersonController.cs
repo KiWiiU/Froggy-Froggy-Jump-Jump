@@ -59,9 +59,12 @@ namespace StarterAssets
 		private float _rotationVelocity;
 		private float _verticalVelocity;
 		private float _terminalVelocity = 53.0f;
+		public Animator animator;
+		public float currentHorizontalSpeed;
+		public GameObject frog;
 
-		// timeout deltatime
-		private float _jumpTimeoutDelta;
+        // timeout deltatime
+        private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
 	
@@ -104,9 +107,9 @@ namespace StarterAssets
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
-
-			// reset our timeouts on start
-			_jumpTimeoutDelta = JumpTimeout;
+            animator = frog.GetComponent<Animator>();
+            // reset our timeouts on start
+            _jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
 		}
 
@@ -115,7 +118,12 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
-		}
+            if (currentHorizontalSpeed < 0)
+			{
+				animator.SetBool("isLeft", true);
+			}
+			animator.SetBool("Grounded", Grounded);
+        }
 
 		private void LateUpdate()
 		{
@@ -264,5 +272,6 @@ namespace StarterAssets
 			// when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
 		}
-	}
+    }
+
 }

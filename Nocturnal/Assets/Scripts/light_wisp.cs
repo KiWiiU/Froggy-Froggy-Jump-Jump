@@ -5,6 +5,7 @@ using UnityEngine;
 public class light_wisp : MonoBehaviour
 {
     public GameObject self, thelight;
+    public AudioSource a1, a2, a3;
 
     void Start()
     {
@@ -24,14 +25,17 @@ public class light_wisp : MonoBehaviour
                 {
                     UI.UIpos[3].SetActive(true);
                     UI.UIneg[3].SetActive(false);
+                    a1.Play();
                 } else if (!UI.UIpos[4].activeSelf)
                 {
                     UI.UIpos[4].SetActive(true);
                     UI.UIneg[4].SetActive(false);
+                    a2.Play();
                 } else
                 {
                     UI.UIpos[5].SetActive(true);
                     UI.UIneg[5].SetActive(false);
+                    a3.Play();
                 }
             }
         }
